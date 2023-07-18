@@ -1,0 +1,30 @@
+type TrainingResource {
+    id: ID!
+    name: String!
+    url: String!
+    description: String!
+    thumbnail: String!
+    status: String!
+}
+
+input CreateTrainingResourceInput {
+    name: String!
+    url: String!
+    description: String!
+    thumbnail: String!
+    status: String!
+}
+
+input DeleteTrainingResourceInput {
+    id: ID!
+}
+
+input UpdateTrainingResourceInput {
+    id: ID!
+    name: String!
+    url: String!
+    description: String!
+    thumbnail: String!
+    status: String!
+}
+

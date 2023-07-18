@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: differentlikeyou-fe
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: domandtom/different_like_u-admin-api:$COMMIT_SHA1
+          ports:
+            - containerPort: 80
+              name: http            
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "512Mi"
+              cpu: "250m"                
+          envFrom:
+            - secretRef:
+                name: differentlikeyou
+      imagePullSecrets:
+        - name: dnt-dockerhub

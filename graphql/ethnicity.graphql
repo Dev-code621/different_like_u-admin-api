@@ -1,0 +1,21 @@
+type Ethnicity {
+    id: ID!
+    name: String!
+    code: String!
+}
+
+input CreateEthnicityInput {
+    name: String!
+    code: String!
+}
+
+input DeleteEthnicityInput {
+    id: ID!
+}
+
+input UpdateEthnicityInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

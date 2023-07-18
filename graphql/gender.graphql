@@ -1,0 +1,22 @@
+type Gender {
+    id: ID!
+    name: String!
+    code: String!
+    pivot: GenderUserDetailPivot
+}
+
+input CreateGenderInput {
+    name: String!
+    code: String!
+}
+
+input DeleteGenderInput {
+    id: ID!
+}
+
+input UpdateGenderInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

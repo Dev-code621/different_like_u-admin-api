@@ -1,0 +1,560 @@
+
+
+
+
+
+
+/* Including one css file into other */
+@import 'fonts/stylesheet.css';
+/* HEADER */
+/* Style the header with a grey background and some padding */
+.header {
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  text-decoration: none;
+  font-size: 48px;
+  line-height: 25px;
+  border-radius: 14px;
+  color: #023252;
+  font-family: 'poppinsbold';
+}
+.header h3{
+        font-size: 19px;
+    font-family: 'poppinsbold';
+    color: #023252;
+}
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 48px;
+  font-weight: bold;
+     font-family: 'poppinsbold';
+    color: #181818;
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+/*Input border*/
+.form-input-bordered{
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 14px;
+}
+
+.text-primary {
+  color: #023252;
+}
+.text-primary a:hover{
+  color: #181818;
+    opacity: 1;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #D87860;
+  border-radius: 14px;
+}
+
+.btn-primary:not([disabled]):not(.btn-disabled):hover {
+    background-color:#D87860;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+.header {
+    overflow: hidden;
+    background: #FFFFFF;
+    padding-top: 15px;
+    padding-bottom:15px;
+    box-shadow: 0px 4px 32px rgb(0 0 0 / 13%);
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+.admin-login{background-color:#fcfcfc!important;}
+
+
+.pure-material-textfield-outlined {
+  width: 100%;
+  --pure-material-safari-helper1: rgb(
+    var(--pure-material-primary-rgb, 33, 150, 243)
+  );
+  position: relative;
+  display: inline-block;
+  padding-top: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Input, Textarea */
+.pure-material-textfield-outlined > input,
+.pure-material-textfield-outlined > textarea {
+  box-sizing: border-box;
+  margin: 0;
+  border: solid 1px; /* Safari */
+  font-family: 'gilroy-medium';
+  color: #2C2929;
+  border-radius: 14px;
+  padding: 8px 13px 8px;
+  width: 100%;
+  height: inherit;
+  color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+  background-color: transparent;
+  box-shadow: none; /* Firefox */
+  line-height: inherit;
+  caret-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+  transition: border 0.2s, box-shadow 0.2s;
+  font-size: 14px;
+}
+
+/* Span */
+.pure-material-textfield-outlined > input + span,
+.pure-material-textfield-outlined > textarea + span {
+  position: absolute;
+  top: 0;
+  left:0;
+    margin-left: 15px;
+    width: fit-content;
+  display: flex;
+  border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+  max-height: 100%;
+  color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+  font-size:12px;
+  line-height: 15px;
+  cursor: text;
+  transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+  color: #000;
+  font-weight: 700;
+  margin-left: 15px;
+  width: fit-content;
+  padding: 0 3px;
+    background-color: #fcfcfc;
+    font-family: 'poppinsregular';
+  color:#4B5B66;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+
+.pure-material-textfield-outlined > input + span::before,
+.pure-material-textfield-outlined > textarea + span::before {
+  margin-right: 15px;
+
+}
+
+.pure-material-textfield-outlined > input + span::after,
+.pure-material-textfield-outlined > textarea + span::after {
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+/* Placeholder-shown */
+.pure-material-textfield-outlined > input:not(:focus):placeholder-shown,
+.pure-material-textfield-outlined > textarea:not(:focus):placeholder-shown {
+  border-top-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);border: 1px solid #D9E5E9;
+}
+.pure-material-textfield-outlined > input:focus-visible {border: 1px solid #4B5B66; outline: 1px}
+
+.pure-material-textfield-outlined > input:not(:focus):placeholder-shown + span,
+.pure-material-textfield-outlined
+  > textarea:not(:focus):placeholder-shown
+  + span {
+  font-size:14px;
+      color: #233238;
+  line-height: 50px;
+  margin-left: 15px;
+  font-weight: normal;
+      font-family: 'gilroy-medium';
+      opacity: 0.4;
+}
+.pure-material-textfield-outlined > input:not(:focus):placeholder-shown + span{background-color: transparent;}
+.pure-material-textfield-outlined > input:focus + span,
+.pure-material-textfield-outlined > textarea:focus + span {
+  font-weight: 700;
+  margin-left: 15px;
+  width: fit-content;
+  background-color: #fcfcfc;
+  padding: 0 3px;
+     font-family: 'poppinsregular';
+  color:#4B5B66;
+}
+
+/* Disabled */
+.pure-material-textfield-outlined > input:disabled,
+.pure-material-textfield-outlined > input:disabled + span,
+.pure-material-textfield-outlined > textarea:disabled,
+.pure-material-textfield-outlined > textarea:disabled + span {
+  border-color: rgba(
+    var(--pure-material-onsurface-rgb, 0, 0, 0),
+    0.38
+  ) !important;
+
+  color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+  pointer-events: none;
+}
+
+
+/* Faster transition in Safari for less noticable fractional font-size issue */
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .pure-material-textfield-outlined > input,
+    .pure-material-textfield-outlined > input + span,
+    .pure-material-textfield-outlined > textarea,
+    .pure-material-textfield-outlined > textarea + span,
+    .pure-material-textfield-outlined > input + span::before,
+    .pure-material-textfield-outlined > input + span::after,
+    .pure-material-textfield-outlined > textarea + span::before,
+    .pure-material-textfield-outlined > textarea + span::after {
+      transition-duration: 0.1s;
+    }
+  }
+}
+
+/* font */
+.admin-login .text-2xl {
+    font-size: 35px;
+    font-family: 'poppinsbold';
+    font-weight: 700;
+    color:#023252;
+}
+.admin-login .btn-primary {
+    font-family: 'poppinsbold';
+    font-weight: 700;
+    border-radius: 14px;
+    padding: 5px;
+    height: auto;
+}
+.admin-login .ml-auto.text-primary{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+      font-family: 'poppinsregular';
+    font-size: 14px;
+    color: #8C8C8C;
+    align-items: center;
+}
+.admin-login .ml-auto.text-primary p{margin-right: 10px; color: #6E8791;}
+.input-password{position: relative;}
+.input-password img{position: absolute;right: 15px;top: 15px;justify-content: center;}
+.input-password input{padding-right: 45px;}
+
+.input-password-confirm img{position: absolute;right: 15px;top: 15px;justify-content: center;}
+/*
+.max-w-login{
+    background: rgb(244,244,244);
+background: -moz-radial-gradient(circle, rgba(244,244,244,0.24) 0%, rgba(255,255,255,1) 100%);
+background: -webkit-radial-gradient(circle, rgba(244,244,244,0.24) 0%, rgba(255,255,255,1) 100%);
+background: radial-gradient(circle, rgba(244,244,244,0.24) 0%, rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4f4f4",endColorstr="#ffffff",GradientType=1);
+}
+*/
+.max-w-login input{background-color: #fff}
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+}
+/* Left Sidebar */
+.bg-grad-sidebar{ background-color:#004878; background-image: none; padding-top: 1.5rem;}
+.bg-grad-sidebar .no-underline, .nova-dashboardcard .no-underline {
+    text-decoration: none;
+    padding: 15px 15px;
+    margin-bottom: 0;
+    display: block;
+}
+.bg-grad-sidebar .text-white a{color: #fff; text-decoration: auto;}
+.router-link-active {
+    text-decoration: none;
+    padding: 15px 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    color: #000 !important;
+}
+.router-link-active svg path{ fill: #000;}
+.no-underline .sidebar-label {font-family: 'poppinsregular';font-size: 14px;color: #fff; padding-top: 4px;}
+.router-link-active .sidebar-label {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'poppinsbold';
+    color: #000;
+        padding-top: 4px;
+}
+.admin-login .no-underline{padding: 0;}
+
+.reset-p{
+        font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #4B5B66;
+}
+/*************** | blog |*****************/
+.nova-form-panel .nova-card .flex{flex-direction: column !important;}
+.nova-form-panel .nova-card .nova-default-field {padding: 15px 20px !important;border: none !important;}
+.nova-form-panel .nova-card .nova-default-field .nova-form-label{padding-top: 0!important; font-family: 'poppinsbold';font-style: normal;font-weight: 600;font-size: 18px;line-height: 27px;letter-spacing: -0.5px; color: #004878;}
+.nova-form-panel select{color: #004878;background-color: #F7FAFC;border: 1px solid #D9E5E9;}
+.nova-form-panel .nova-card .flex .px-8 {width: 100% !important; padding: 2px 0px !important;}
+.nova-form-panel input, .nova-form-panel .trix-content, .nova-form-panel textarea{border: 2px solid #D9E5E9;box-sizing: border-box;border-radius: 6px; box-shadow: none; color: #b7bdc2;}
+
+.nova-form-panel input:focus,.nova-form-panel select:focus, .nova-form-panel .trix-content:focus, nova-form-panel .trix-content:focus , .nova-form-panel textarea:focus{border: 2px solid #000 !important; box-shadow: none !important; color: #000 !important;}
+
+h1.nova-heading{
+    font-family: 'poppinsbold';font-style: normal;font-weight: bold;font-size: 40px;line-height: 48px;letter-spacing: -1px;color: #023252;
+}
+
+.nova-form-panel .card{ border: 1px solid #D9E5E9 !important; border-radius: 12px!important;}
+.nova-cancel-button{border: 2px solid #D87860;height: 50px;line-height: 50px;padding: 0 30px;color: #D87860;font-weight: bold;font-size: 18px;font-family: 'poppinsbold';border-radius: 12px;background-color: #fff;
+}
+.nova-progress-button{
+    border: 2px solid #D87860;height: 50px;line-height: 50px;padding: 0 30px;color: #fff;font-weight: bold;font-size: 18px;font-family: 'poppinsbold';border-radius: 12px;background-color:#D87860;
+}
+/* header style */
+.px-view {
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+}
+.merchant .h-header {
+    height: 3.75rem;
+}
+.merchant a.header-contact-menu{
+font-family: 'poppinsbold';
+font-style: normal;
+font-weight: bold;
+font-size: 19px;
+text-align: center;
+
+color: #023252;
+}
+.merchant a.header-login-logout, .merchant button.header-login-logout{
+font-family: 'poppinsbold';
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+color: #D87860;
+    border: 1px solid #D87860;
+box-sizing: border-box;
+border-radius: 12px;
+    padding: 15px 30px;
+        margin-left: 30px;
+}
+.merchant .p-left{padding: 10rem 5rem 10rem 3.125rem;}
+
+.merchant #app {
+    background-color: #FCFCFC;
+}
+.merchant h3{
+font-family: 'poppinsbold';
+font-style: normal;
+font-weight: bold;
+font-size: 40px;
+line-height: 48px;
+letter-spacing: -1px;
+color: #023252;
+
+}
+.merchant p{
+font-family: 'poppinsregular';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 18px;
+
+color: #4B5B66;
+}
+.continue-btn{height: 50px; padding: 0 50px;}
+.register{max-width: 700px; width: 100%;}
+.primary-text{font-family: 'poppinsbold'; color: #D87860;font-weight: 700;}
+.header-sign-up{background-color:#D87860 !important; color: #fff !important;}
+a:hover {color: #d87860;}
+/************************|all 2k 4k 8k Fixed|****************************/
+body { max-width: 1440px !important; margin: 0 auto !important; overflow-x: hidden !important; -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.24) !important; -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.24) !important; box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.24) !important;}
+
+/************************|Merchant Set password|*************************/
+.set-password{max-width: 25rem;}
+.merchant .reset-p{
+font-family: 'Poppins';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #4B5B66;
+}
+.merchant .text-2xl {
+    font-size: 35px;
+    font-family: 'poppinsbold';
+    font-weight: 700;
+    color: #023252;
+}
+
+.h-header a:hover {
+    color: #023252;
+}
+/************************* | sidebar submenu design | *******************/
+
+.w-sidebar .tracking-wide {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    font-size: .875rem;
+    font-weight: 500;
+    -webkit-letter-spacing: 0;
+    -moz-letter-spacing: 0;
+    -ms-letter-spacing: 0;
+    letter-spacing: 0;
+    position: relative;
+    text-align: left;
+    transition: color .3s ease;
+    width: 100%;
+    margin: 0;
+    align-items: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    text-decoration: none;
+    padding: 15px 15px;
+}
+.w-sidebar .sidebar-icon{float: left;}
+.w-sidebar .list-reset{padding-left: 33px;}
+.w-sidebar .group-set{cursor: context-menu;}
+.w-sidebar .tracking-wide a{text-decoration: none;color: #fff;}
+.w-sidebar .leading-tight a{color: #fff;padding: 15px;display: block;text-decoration: none;min-width: auto;}
+.w-sidebar .leading-tight a:hover{/*color: #fff !important;*/ opacity: .5 !important;}
+.other.router-link-exact-active.router-link-active {background-color: #fff;border-radius: 12px;color: #000 !important;}
+.other.router-link-active {background-color: #fff;border-radius: 12px;color: #000 !important;}
+/*.nova-card a.no-underline {padding: 0px;}*/
+
+/*************** | Claim Requests |*****************/
+.nova-modal.nova-confirm-action-modal .action .nova-form-id-field, .nova-modal.nova-confirm-action-modal .action .flex{display: grid !important;}
+.nova-modal.nova-confirm-action-modal .action .form-input:disabled, .nova-modal.nova-confirm-action-modal .action input.form-input:read-only, .nova-modal.nova-confirm-action-modal .action textarea.form-input:read-only{ color: #6E8691;background-color:#f7fafc;
+    border: none;
+    padding: 0;}
+.nova-modal.nova-confirm-action-modal .w-action-fields, .nova-modal.nova-confirm-action-modal .bg-30{background-color: #f7fafc;}
+.nova-modal.nova-confirm-action-modal .action .border-b {border: none;}
+.nova-modal.nova-confirm-action-modal .nova-form-file-field .card {
+    margin-top: 30px;
+
+}
+.nova-modal.nova-confirm-action-modal .btn-primary {
+    border-radius: 16px;
+    line-height: 1;
+    width: 150px;
+    height: 50px;
+    margin: 15px;
+}
+.nova-modal.nova-confirm-action-modal .items-center.ml-auto{margin: 0 auto !important;}
+.nova-modal.nova-confirm-action-modal .btn-link{
+    color:#DE2B4B;
+    background-color: #fff;
+    border-radius: 16px;
+    line-height: 0;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #DE2B4B;
+}
+.nova-modal.nova-confirm-action-modal .action .py-6{
+    width: 100%;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.nova-modal.nova-confirm-action-modal .action{margin-bottom: 15px;}
+.nova-modal.nova-confirm-action-modal .action .nova-form-label, .nova-modal.nova-confirm-action-modal .nova-heading {
+    font-family: 'poppinsbold' !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 12px;
+    letter-spacing: -1px;
+    color: #004878;
+
+}
+.nova-modal.nova-confirm-action-modal .nova-heading {margin-bottom: 30px; line-height:0px;}
+
+   .dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.pending-claim::before {
+    content: '';
+    height: .65em;
+    width: .65em;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: -.85em;
+    transform: translateY(-50%);
+    -webkit-animation: 1s blink ease infinite;
+    -moz-animation: 1s blink ease infinite;
+    -ms-animation: 1s blink ease infinite;
+    -o-animation: 1s blink ease infinite;
+    animation: 1s blink ease infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.nova-index-boolean-field {padding-left: 35px;}

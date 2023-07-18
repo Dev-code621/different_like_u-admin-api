@@ -1,0 +1,22 @@
+type Disability {
+    id: ID!
+    name: String!
+    code: String!
+    pivot: DisabilityUserDetailPivot
+}
+
+input CreateDisabilityInput {
+    name: String!
+    code: String!
+}
+
+input DeleteDisabilityInput {
+    id: ID!
+}
+
+input UpdateDisabilityInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

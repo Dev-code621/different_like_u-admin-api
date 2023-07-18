@@ -1,0 +1,24 @@
+type Like {
+    id: ID!
+    user: User!
+    review: Review
+    reply: Reply
+}
+
+input CreateLikeInput {
+    user_id: ID!
+    review_id: ID
+    reply_id: ID
+}
+
+input DeleteLikeInput {
+    id: ID!
+}
+
+input UpdateLikeInput {
+    id: ID!
+    user_id: ID!
+    review_id: ID
+    reply_id: ID
+}
+

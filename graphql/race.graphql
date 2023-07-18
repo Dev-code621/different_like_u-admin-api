@@ -1,0 +1,21 @@
+type Race {
+    id: ID!
+    name: String!
+    code: String!
+}
+
+input CreateRaceInput {
+    name: String!
+    code: String!
+}
+
+input DeleteRaceInput {
+    id: ID!
+}
+
+input UpdateRaceInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

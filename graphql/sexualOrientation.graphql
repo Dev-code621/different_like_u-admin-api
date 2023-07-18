@@ -1,0 +1,22 @@
+type SexualOrientation {
+    id: ID!
+    name: String!
+    code: String!
+    pivot: SexualOrientationUserDetailPivot
+}
+
+input CreateSexualOrientationInput {
+    name: String!
+    code: String!
+}
+
+input DeleteSexualOrientationInput {
+    id: ID!
+}
+
+input UpdateSexualOrientationInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

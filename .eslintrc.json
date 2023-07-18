@@ -1,0 +1,45 @@
+{
+    "extends": "airbnb",
+    "env": {
+      "browser": true,
+      "jasmine": true
+    },
+    "rules": {
+      "space-in-parens": "off",
+      "no-alert": "error",
+      "comma-dangle": "off",
+      "camelcase": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": 0,
+      "max-len": [2, {"ignoreComments": true, "code": 280 }],
+      "object-curly-newline": ["error", {"ExportDeclaration": { "multiline": true, "minProperties": 10 }}],
+      "no-param-reassign": "off",
+      "react/no-danger": "off",
+      "react/destructuring-assignment": "off",
+      "react/prefer-stateless-function": [2, {
+        "ignorePureComponents": true
+      }],
+      "react/forbid-prop-types": [0],
+      "react/jsx-props-no-spreading": [0],
+      "react/no-multi-comp": [0],
+      "require-jsdoc": ["warn", {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": false,
+          "ClassDeclaration": false
+        }
+      }],
+      "react/jsx-filename-extension": ["error", {
+        "extensions": [".js"]
+      }],
+      "jsx-a11y/label-has-associated-control": [0],
+      "jsx-a11y/label-has-for": [ 2, {
+          "components": [ "Label" ],
+          "required": {
+              "every": [ "id" ]
+          },
+          "allowChildren": false
+      }],
+      "strict": ["error", "global"]
+    }
+  }

@@ -1,0 +1,22 @@
+type AllyGroup {
+    id: ID!
+    name: String!
+    code: String!
+    pivot: AllyGroupUserDetailPivot
+}
+
+input CreateAllyGroupInput {
+    name: String!
+    code: String!
+}
+
+input DeleteAllyGroupInput {
+    id: ID!
+}
+
+input UpdateAllyGroupInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

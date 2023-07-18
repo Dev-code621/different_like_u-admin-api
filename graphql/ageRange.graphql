@@ -1,0 +1,21 @@
+type AgeRange {
+    id: ID!
+    name: String!
+    code: String!
+}
+
+input CreateAgeRangeInput {
+    name: String!
+    code: String!
+}
+
+input DeleteAgeRangeInput {
+    id: ID!
+}
+
+input UpdateAgeRangeInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

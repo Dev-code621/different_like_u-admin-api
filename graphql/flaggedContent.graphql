@@ -1,0 +1,64 @@
+type FlaggedContent {
+    id: ID!
+    user: User!
+    business: Business!
+    review: Review
+    reply: Business
+    reason: Reason
+    type: Types!
+    status: FCStatuses!
+}
+
+input CreateFlaggedContentInput {
+    user_id: ID!
+    business_id: ID!
+    review_id: ID
+    reply_id: ID
+    reason: Reason!
+    type: Types!
+    status: FCStatuses!
+}
+
+input DeleteFlaggedContentInput {
+    id: ID!
+}
+
+input UpdateFlaggedContentInput {
+    id: ID!
+    user_id: ID!
+    business_id: ID!
+    review_id: ID!
+    reply_id: ID
+    reason: Reason!
+    type: Types!
+    status: FCStatuses!
+}
+
+
+enum FCStatuses {
+    PENDING @enum(value: "PENDING")
+    SOLVED @enum(value: "SOLVED")
+    OTHER @enum(value: "OTHER")
+}
+
+enum Types {
+    REVIEW @enum(value: "REVIEW")
+    MERCHANT_REPLY @enum(value: "Merchant reply")
+    CONSUMER_REPLY @enum(value: "Consumer reply")
+}
+
+enum Reason {
+    RACISTLANGUAGE @enum(value: "Racist language")
+    HARASSMENTORBULLYING @enum(value: "Harassment or bullying")
+    SPAM @enum(value: "Spam")
+    SEXISTSLURS @enum(value: "Sexist slurs")
+    HATESPEECHORSYMBOLS @enum(value: "Hate speech or symbols")
+    NUDITYORPORNOGRAPHY @enum(value: "Nudity or Pornography")
+    VIOLENCEORTHREATOFVIOLENCE @enum(value: "Violence or threat of violence")
+    SELFINJURY @enum(value: "Self injury")
+    SALEORPROMOTIONOFFIREARMS @enum(value: "Sale or promotion of firearms")
+    SALEORPROMOTIONOFDRUGS @enum(value: "Sale or promotion of drugs")
+    FRAUDFAKEINFORMATION @enum(value: "Fraud / Fake Information")
+    VULGARITYFOULLANGUAGE @enum(value: "Vulgarity / Foul language")
+    INAPPROPRIATEPHOTO @enum(value: "Inappropriate Photo")
+}

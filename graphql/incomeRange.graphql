@@ -1,0 +1,21 @@
+type IncomeRange {
+    id: ID!
+    name: String!
+    code: String!
+}
+
+input CreateIncomeRangeInput {
+    name: String!
+    code: String!
+}
+
+input DeleteIncomeRangeInput {
+    id: ID!
+}
+
+input UpdateIncomeRangeInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

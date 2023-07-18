@@ -1,0 +1,47 @@
+type Post {
+    id: ID!
+    user: User!
+    category: Categories!
+    title: String!
+    summary: String
+    content: String!
+    thumbnail: String
+    image: String
+    status: String!
+}
+
+input CreatePostInput {
+    user: ID!
+    category: Categories!
+    title: String!
+    summary: String
+    content: String!
+    thumbnail: String
+    image: String
+    status: String!
+}
+
+input DeletePostInput {
+    id: ID!
+}
+
+input UpdatePostInput {
+    id: ID!
+    user: ID!
+    category: Categories!
+    title: String!
+    summary: String
+    content: String!
+    thumbnail: String
+    image: String
+    status: String!
+}
+
+enum Categories {
+    UNCONSCIOUS_BIAS @enum(value: "Unconscious Bias")
+    INCLUSIVE_COMMUNICATION_AND_MARKETING @enum(value: "Inclusive Comunication & Marketing")
+    ANTI_DISCRIMINATION_RESOURCES @enum(value: "Anti-Discrimination Resources")
+    DIVERSE_AND_INCLUSIVE_TEAMS @enum(value: "Diverse and Inclusive Teams")
+    CONSUMER_TRENDS @enum(value: "Consumer Trends")
+    MAXIMIZING_YOUR_DATA @enum(value: "Maximizing Your Data")
+}

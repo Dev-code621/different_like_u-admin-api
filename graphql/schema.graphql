@@ -1,0 +1,145 @@
+#import user.graphql
+#import auth.graphql
+#import educationalContent.graphql
+#import trainingResource.graphql
+#import post.graphql
+#import notification.graphql
+#import business.graphql
+#import savedPlace.graphql
+#import userDetail.graphql
+#import review.graphql
+#import reply.graphql
+#import flaggedContent.graphql
+#import like.graphql
+#import gender.graphql
+#import genderUserDetailPivot.graphql
+#import sexualOrientation.graphql
+#import sexualOrientationUserDetailPivot.graphql
+#import allyGroup.graphql
+#import allyGroupUserDetailPivot.graphql
+#import ethnicity.graphql
+#import race.graphql
+#import appearance.graphql
+#import disability.graphql
+#import disabilityUserDetailPivot.graphql
+#import ageRange.graphql
+#import incomeRange.graphql
+#import languageProficiency.graphql
+#import scoring.graphql
+#import pushNotification.graphql
+
+enum Operator {
+    EQ @enum(value: "=")
+    NEQ @enum(value: "!=")
+    GT @enum(value: ">")
+    GTE @enum(value: ">=")
+    LT @enum(value: "<")
+    LTE @enum(value: "<=")
+    LIKE @enum(value: "LIKE")
+    NOT_LIKE @enum(value: "NOT_LIKE")
+}
+
+enum Statuses {
+    DRAFT
+    PUBLISHED
+    UNPUBLISHED
+}
+
+
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type businessTypeQuery {
+    name: String
+}
+
+type Query {
+    roles: [Role!]! @all
+    users: [User!]! @all
+    user(id: Int! @eq): User @find  @guard(with: ["api"])
+    me: User! @auth  @guard(with: ["api"])
+    business(where: _ @whereConditions(columns: ["age"], handler: "App\\LocationHandler")): [Business] @all
+    businessByPlaceId(google_id: String! @where(operator: "=")): [Business] @all @guard(with: ["api"])
+    educationalContent: [EducationalContent] @all
+    trainingResource: [TrainingResource] @all
+    flaggedContent: [FlaggedContent] @all
+    post: [Post] @all
+    notification: [Notification] @all
+    savedPlace: [SavedPlace] @all
+    savedPlaceByUserId(user_id: Int! @where(operator: "="),  orderBy: _ @orderBy(columns: ["created_at"], relations: [{ relation: "business", columns: ["avg_inclusive_score"]}])): [SavedPlace!]! @paginate(defaultCount: 10)
+    savedPlaceByUserIdBusinessId(user_id: Int! @where(operator: "="), business_id: Int! @where(operator: "=")): [SavedPlace!]! @all
+    userDetail: [UserDetail] @all
+    review: [Review] @all
+    reviewByUserId(user_id: Int! @where(operator: "="), orderBy: _ @orderBy(columns: ["overall_score", "inclusive_score", "created_at"])): [Review!]! @all
+    reviewByMerchantId(business_id: Int! @where(operator: "="), status: Statuses @eq, orderBy: _ @orderBy(columns: ["overall_score", "inclusive_score", "created_at"])): [Review!]! @paginate(defaultCount: 10) @guard(with: ["api"])
+    reply: [Reply] @all
+    like: [Like] @all
+    gender: [Gender] @all
+    sexualOrientation: [SexualOrientation] @all
+    race: [Race] @all
+    allyGroups: [AllyGroup] @all
+    ethnicity: [Ethnicity] @all
+    disability: [Disability] @all
+    appearance: [Appearance] @all
+    ageRange: [AgeRange] @all
+    incomeRange: [IncomeRange] @all
+    languageProficiency: [LanguageProficiency] @all
+    scoring: [Scoring] @all
+    pushNotificationByUserId(user_id: Int! @where(operator: "=")): [PushNotification!]! @all
+    topInclusiveBusiness(lat: Float, long: Float,
+        where: _ @whereConditions(columns: ["avg_inclusive_score"]), limit: Int @limit
+    ): [Business] @field(resolver: "BusinessQuery") @orderBy(column: "avg_inclusive_score", direction: DESC)
+    businessQuery(lat: Float, long: Float): [Business] @field(resolver: "BusinessQuery")  @orderBy(column: "avg_inclusive_score", direction: DESC)
+    businessesByPlaceIds(google_ids: [String]): [Business] @field(resolver: "BusinessesByPlaceIds")
+    hasUnreadNotifications(id: Int): Boolean
+}
+
+type Mutation {
+    updateUser(input: UpdateUserInput! @spread): User! @update
+    deleteUser(input: DeleteUserInput! @spread): DeleteUserResponse!
+    createBusiness(input: CreateBusinessInput! @spread): Business!
+    updateBusiness(input: UpdateBusinessInput! @spread): Business! @update
+    deleteBusiness(input: DeleteBusinessInput! @spread): Business! @delete
+    createEducationalContent(input: CreateEducationalContentInput! @spread): EducationalContent! @create
+    updateEducationalContent(input: UpdateEducationalContentInput! @spread): EducationalContent! @update
+    deleteEducationalContent(input: DeleteEducationalContentInput! @spread): EducationalContent! @delete
+    createNotification(input: CreateNotificationInput! @spread): Notification! @create
+    updateNotification(input: UpdateNotificationInput! @spread): Notification! @update
+    deleteNotification(input: DeleteNotificationInput! @spread): Notification! @delete
+    createPost(input: CreatePostInput! @spread): Post! @create
+    updatePost(input: UpdatePostInput! @spread): Post! @update
+    deletePost(input: DeletePostInput! @spread): Post! @delete
+    createReply(input: CreateReplyInput! @spread): Reply! @create
+    updateReply(input: UpdateReplyInput! @spread): Reply! @update
+    deleteReply(input: DeleteReplyInput! @spread): Reply! @delete
+    createReview(input: CreateReviewInput! @spread): Review! @create
+    updateReview(input: UpdateReviewInput! @spread): Review! @update
+    deleteReview(input: DeleteReviewInput! @spread): Review! @delete
+    createSavedPlace(input: CreateSavedPlaceInput! @spread): SavedPlace! @create
+    updateSavedPlace(input: UpdateSavedPlaceInput! @spread): SavedPlace! @update
+    deleteSavedPlace(input: DeleteSavedPlaceInput! @spread): SavedPlace! @delete
+    createTrainingResource(input: CreateTrainingResourceInput! @spread): TrainingResource! @create
+    updateTrainingResource(input: UpdateTrainingResourceInput! @spread): TrainingResource! @update
+    deleteTrainingResource(input: DeleteTrainingResourceInput! @spread): TrainingResource! @delete
+    createUserDetail(input: CreateUserDetailInput! @spread): UserDetail! @create
+    updateUserDetail(input: UpdateUserDetailInput! @spread): UserDetail! @update
+    updateUserName(input: UpdateUserNameInput! @spread): UserDetail! @update @guard(with: ["api"])
+    deleteUserDetail(input: DeleteUserDetailInput! @spread): UserDetail! @delete
+    createFlaggedContent(input: CreateFlaggedContentInput! @spread): FlaggedContent! @create
+    updateFlaggedContent(input: UpdateFlaggedContentInput! @spread): FlaggedContent! @update
+    deleteFlaggedContent(input: DeleteFlaggedContentInput! @spread): FlaggedContent! @delete
+    createLike(input: CreateLikeInput! @spread): Like! @create
+    updateLike(input: UpdateLikeInput! @spread): Like! @update
+    deleteLike(input: DeleteLikeInput! @spread): Like! @delete
+
+    login(input: LoginInput @spread): AuthPayload! @field(resolver: "App\\GraphQL\\Mutations\\Login@resolve")
+    refreshToken(input: RefreshTokenInput @spread): RefreshTokenPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\RefreshToken@resolve")
+    logout: LogoutResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Logout@resolve")
+    forgotPassword(input: ForgotPasswordInput! @spread): ForgotPasswordResponse!
+    updateForgottenPassword(input: NewPasswordWithCodeInput @spread): ForgotPasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\ResetPassword@resolve")
+    register(input: RegisterInput @spread): RegisterResponse! @field(resolver: "App\\GraphQL\\Mutations\\Register@resolve")
+    socialLogin(input: SocialLoginInput! @spread): AuthPayload! @field(resolver: "App\\GraphQL\\Mutations\\SocialLogin@resolve")
+    verifyEmail(input: VerifyEmailInput! @spread): AuthPayload! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\VerifyEmail@resolve")
+    resendVerifyEmail(input: ResendVerifyEmailInput! @spread): ResendVerifyEmailResponse! @field(resolver: "App\\GraphQL\\Mutations\\ResendVerifyEmailMutation@resolve")
+    updatePassword(input: UpdatePassword! @spread): UpdatePasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve") @guard(with: ["api"])
+    updateNotificationsToRead(user_id: ID): [PushNotification]
+}

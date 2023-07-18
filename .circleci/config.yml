@@ -1,0 +1,109 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@1.5.0
+jobs:
+  build:
+    docker:
+      - image: domandtom/docker-nginx-php-74-dev:latest
+    environment:
+      IMAGE_NAME: domandtom/different_like_u-admin-api
+    working_directory: ~/app
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+            - dependency-cache-{{ checksum "package.json" }}
+            - dependency-cache-
+      - run: composer config http-basic.nova.laravel.com ${NOVA_USERNAME} ${NOVA_PASSWORD}
+      - run: composer config github-oauth.github.com ${GITHUB_AUTH_TOKEN}      
+#      - run: cp .env.example .env
+      - run: touch storage/oauth-private.key
+      - run: touch storage/oauth-public.key
+      - run: composer install
+      - run: php artisan passport:keys --force
+#      - run: composer test
+      - run:
+          name: Compile assets
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "release" ]; then
+              npm install
+              npm run production
+            fi
+            if [ "${CIRCLE_BRANCH}" == "main" ]; then
+              npm install
+              npm run dev
+            fi
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - save_cache:
+          paths:
+            - ./vendor
+          key: dependency-cache-{{ checksum "composer.json" }}
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - ./
+
+  deploy:
+    docker:
+      - image: cimg/base:2021.07
+    environment:
+      IMAGE_NAME: domandtom/different_like_u-admin-api
+    working_directory: ~/app
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - setup_remote_docker
+      - run: rm -rf .env
+      - run:
+          name: Populate .env file
+          command: |
+            echo "APP_BUILD=${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM}" >> .env
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t $IMAGE_NAME:latest .
+      - run:
+          name: Push Docker Image
+          command: |
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker tag $IMAGE_NAME:latest $IMAGE_NAME:$CIRCLE_SHA1
+            docker push $IMAGE_NAME:latest
+            docker push $IMAGE_NAME:$CIRCLE_SHA1
+      - run:
+          name: Install envsubst
+          command: |
+            sudo apt-get update && sudo apt-get -y install gettext-base
+      - run:
+          name: Install kubectl
+          command: |
+            curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+            chmod u+x ./kubectl
+      - run:
+          name: Deploy Code
+          command: ./scripts/ci-deploy.sh
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - main
+                - release
+          requires:
+            - build
+            - hold
+      - hold:
+          type: approval
+          requires:
+            - build
+          filters:
+            branches:
+              only: release

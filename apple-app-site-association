@@ -1,0 +1,12 @@
+{
+  "applinks": {
+      "apps":[],
+      "details": [
+           {
+             "appIDs": "U36D6ZP4CM.com.inclucity.www",
+             "paths":["/password/reset/*"]
+            
+           }
+       ]
+   }
+}

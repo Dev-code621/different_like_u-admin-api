@@ -1,0 +1,3 @@
+type DisabilityUserDetailPivot {
+    last_modified: String
+}

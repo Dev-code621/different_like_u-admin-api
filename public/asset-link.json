@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "inclucity",
+    "package_name": "com.inclucity.www",
+    "sha256_cert_fingerprints":
+    ["FA:2A:65:D0:E8:3A:7F:21:74:17:80:74:01:8A:63:B2:D4:D3:27:0C:D2:33:56:86:D4:DB:C4:7B:41:D4:74:94"]
+  }
+}]

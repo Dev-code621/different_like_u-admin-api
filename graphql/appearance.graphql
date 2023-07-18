@@ -1,0 +1,21 @@
+type Appearance {
+    id: ID!
+    name: String!
+    code: String!
+}
+
+input CreateAppearanceInput {
+    name: String!
+    code: String!
+}
+
+input DeleteAppearanceInput {
+    id: ID!
+}
+
+input UpdateAppearanceInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

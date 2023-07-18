@@ -1,0 +1,67 @@
+type Review {
+    id: ID!
+    user: User!
+    business: Business!
+    comment: String!
+    overall_score: Float!
+    inclusive_score: Float!
+    images: String
+    status: Statuses!
+    welcomed: Boolean!
+    respectfully: Boolean!
+    recommended: Boolean!
+    treated_differently: Boolean!
+    treated_differently_reason: String
+    similarity: Boolean!
+    flaggedContent: [FlaggedContent]
+    likes: [Like]
+    reply(status: Statuses @eq): [Reply]
+    similarity_reason: String
+    matching: String @field(resolver: "App\\Review@matching")
+    created_at : DateTime
+}
+
+input CreateReviewInput {
+    user_id: ID!
+    business_id: ID!
+    comment: String!
+    overall_score: Float!
+    inclusive_score: Float!
+    images: String
+    status: Statuses!
+    welcomed: Boolean!
+    respectfully: Boolean!
+    recommended: Boolean!
+    treated_differently: Boolean!
+    treated_differently_reason: String
+    similarity: Boolean!
+    similarity_reason: String
+}
+
+input DeleteReviewInput {
+    id: ID!
+}
+
+input UpdateReviewInput {
+    id: ID!
+    user_id: ID!
+    business_id: ID!
+    comment: String!
+    overall_score: Float!
+    inclusive_score: Float!
+    images: String
+    status: Statuses!
+    welcomed: Boolean!
+    respectfully: Boolean!
+    recommended: Boolean!
+    treated_differently: Boolean!
+    treated_differently_reason: String
+    similarity: Boolean!
+    similarity_reason: String
+}
+
+enum Statuses {
+    DRAFT @enum(value: "Draft")
+    PUBLISHED @enum(value: "Published")
+    UNPUBLISHED @enum(value: "Unpublished")
+}

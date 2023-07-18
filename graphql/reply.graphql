@@ -1,0 +1,48 @@
+type Reply {
+    id: ID!
+    user: User!
+    review: Review!
+    comment: String!
+    status: Statuses!
+    type: Type!
+    level: Int
+    flaggedContent: [FlaggedContent]
+    likes: [Like]
+    created_at : DateTime
+}
+
+input CreateReplyInput {
+    user_id: ID!
+    review_id: ID!
+    comment: String!
+    status: Statuses!
+    type: Type!
+    level: Int
+
+}
+
+input DeleteReplyInput {
+    id: ID!
+}
+
+input UpdateReplyInput {
+    id: ID!
+    user_id: ID!
+    review_id: ID!
+    comment: String!
+    status: Statuses!
+    type: Type!
+    level: Int
+
+}
+
+enum Statuses {
+    DRAFT @enum(value: "Draft")
+    PUBLISHED @enum(value: "Published")
+    UNPUBLISHED @enum(value: "Unpublished")
+}
+
+enum Type {
+    MERCHANT_REPLY @enum(value: MERCHANT_REPLY)
+    CONSUMER_REPLY @enum(value: CONSUMER_REPLY)
+}

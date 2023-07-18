@@ -1,0 +1,5 @@
+type Scoring {
+    id: ID!
+    code: String
+    score: String
+}

@@ -1,0 +1,21 @@
+type SavedPlace {
+    id: ID!
+    user: User!
+    business(orderBy: _ @orderBy(columns: ["created_at", "avg_inclusive_score"])): Business!
+    created_at : DateTime
+}
+
+input CreateSavedPlaceInput {
+    user_id: ID!
+    business_id: ID!
+}
+
+input DeleteSavedPlaceInput {
+    id: ID!
+}
+
+input UpdateSavedPlaceInput {
+    id: ID!
+    user_id: ID!
+    business_id: ID!
+}

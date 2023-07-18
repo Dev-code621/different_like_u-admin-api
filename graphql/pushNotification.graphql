@@ -1,0 +1,7 @@
+type PushNotification {
+    id: ID!
+    user: User
+    text: String!
+    is_read: Boolean
+    created_at: DateTime
+}

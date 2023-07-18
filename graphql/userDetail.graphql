@@ -1,0 +1,94 @@
+type UserDetail {
+    id: ID!
+    user: User!
+    user_name: String!
+    age_range_last_modified: String
+    income_range_last_modified: String
+    ethnicity_last_modified: String
+    appearance_last_modified: String
+    language_proficiency_last_modified: String
+    genders: [Gender!]! @belongsTo(relation: "genders")
+    sexualOrientations: [SexualOrientation!]! @belongsTo(relation: "sexualOrientations")
+    allyGroups: [AllyGroup!]! @belongsTo(relation: "allyGroups")
+    race: Race! @belongsTo(relation: "race")
+    disabilities: [Disability] @belongsTo(relation: "disabilities")
+    ethnicity: Ethnicity @belongsTo(relation: "ethnicity")
+    appearance: Appearance
+    ageRange: AgeRange
+    incomeRange: IncomeRange
+    languageProficiency: LanguageProficiency
+    image: String
+    notification: Boolean
+    updated_at: String
+}
+
+input CreateUserDetailInput {
+    user_id: ID!
+    user_name: String!
+    genders: CreateGenderUserDetailBelongsToMany!
+    sexualOrientations: CreateSexualOrientationUserDetailBelongsToMany!
+    allyGroups: CreateAllyGroupUserDetailBelongsToMany!
+    race: CreateRaceUserDetailBelongsTo
+    disabilities: CreateDisabilityUserDetailBelongsToMany
+    ethnicity: CreateEthnicityUserDetailBelongsTo
+    appearance_id: ID
+    age_range_id: ID
+    income_range_id: ID
+    language_proficiency_id: ID
+    notification: Boolean
+    image: String
+}
+
+input UpdateUserDetailBelongsToMany {
+    create: [CreateUserDetailInput!]
+    connect: [ID!]
+    update: [UpdateUserDetailInput!]
+    sync: [ID!]
+    syncWithoutDetaching: [ID!]
+    delete: [ID!]
+    disconnect: [ID!]
+}
+
+input CreateGenderUserDetailBelongsToMany {
+    sync: [ID!]
+}
+input CreateSexualOrientationUserDetailBelongsToMany {
+    sync: [ID!]
+}
+input CreateAllyGroupUserDetailBelongsToMany {
+    sync: [ID!]
+}
+input CreateDisabilityUserDetailBelongsToMany {
+    sync: [ID!]
+}
+input CreateRaceUserDetailBelongsTo {
+    connect: ID
+}
+input CreateEthnicityUserDetailBelongsTo {
+    connect: ID
+}
+input DeleteUserDetailInput {
+    id: ID!
+}
+
+input UpdateUserDetailInput {
+    id: ID!
+    user_name: String!
+    genders: CreateGenderUserDetailBelongsToMany!
+    sexualOrientations: CreateSexualOrientationUserDetailBelongsToMany!
+    allyGroups: CreateAllyGroupUserDetailBelongsToMany!
+    race: CreateRaceUserDetailBelongsTo
+    disabilities: CreateDisabilityUserDetailBelongsToMany
+    ethnicity: CreateEthnicityUserDetailBelongsTo
+    appearance_id: ID
+    age_range_id: ID
+    income_range_id: ID
+    language_proficiency_id: ID
+    notification: Boolean
+    image: String
+}
+
+input UpdateUserNameInput {
+    id: ID!
+    user_name: String!
+}

@@ -1,0 +1,49 @@
+
+/* Some Base Styles */
+body,
+html {
+  @apply h-full text-gray-700;
+}
+
+#app {
+  @apply min-h-full;
+
+  &.no-bg {
+    background-image: unset;
+    background-size: unset;
+    @apply bg-white;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 34px;
+  @apply font-bold;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+  @apply font-bold;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 22px;
+  @apply font-bold;
+}
+
+.container {
+  margin: auto;
+  padding: 0 20px;
+
+  @media (min-width: 640px) {
+
+  }
+
+  @media (min-width: 1025px) {
+    padding: 0;
+  }
+}
+
+

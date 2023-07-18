@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: '"true"'
+  generation: 4
+  name: lb
+  namespace: differentlikeyou-fe
+spec:
+  rules:
+  - host: app.differentlikeyouinc.com
+    http:
+      paths:
+      - backend:
+          serviceName: web
+          servicePort: 80     
+  tls:
+  - hosts:
+    - app.differentlikeyouinc.com
+    secretName: differentlikeyou-fe-tls

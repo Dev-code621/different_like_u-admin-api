@@ -1,0 +1,75 @@
+type ally_group_scores {
+    name: String
+    score: Float
+}
+
+
+type Business {
+    id: Int!
+    google_id: String
+    name: String!
+    about: String
+    image: String
+    links: String
+    claimed: ClaimStatuses
+    user: User
+    opening_hours: String
+    default_address: String
+    types: String
+    international_phone_number: String
+    latitude: String
+    longitude: String
+    url: String
+    website: String
+    scoring: [Scoring]
+    for_you_score: String @field(resolver: "App\\Business@forYouScore")
+    ally_group_scores: [ally_group_scores] @field(resolver: "App\\Business@allyGroupScores")
+    avg_inclusive_score: Float
+    reviews(status: String @eq): [Review]
+}
+
+input CreateBusinessInput {
+    google_id: String
+    name: String!
+    about: String
+    image: String
+    links: String
+    claimed: ClaimStatuses
+    opening_hours: String
+    default_address: String!
+    types: String
+    international_phone_number: String
+    latitude: String
+    longitude: String
+    url: String
+    website: String
+}
+
+input DeleteBusinessInput {
+    id: ID!
+}
+
+input UpdateBusinessInput {
+    id: ID!
+    google_id: String
+    name: String!
+    about: String
+    image: String
+    links: String
+    other_link: String
+    claimed: ClaimStatuses
+    user: ID!
+    opening_hours: String
+    default_address: String
+    types: String
+    international_phone_number: String
+    latitude: String
+    longitude: String
+    url: String
+    website: String
+}
+
+enum ClaimStatuses {
+    UNCLAIMED @enum(value: "Unclaimed")
+    ACCEPTED @enum(value: "Accepted")
+}

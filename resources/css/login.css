@@ -1,0 +1,13 @@
+.login-card {
+    @apply flex flex-col break-words bg-white rounded shadow-md
+}
+.login-card-title {
+    @apply font-semibold py-3 px-6 mb-0 bg-indigo-500 rounded-t text-white
+}
+.login-form-label {
+    @apply text-gray-700 text-sm font-bold mb-2
+}
+
+.login-form-input {
+    @apply mt-2 form-input
+}

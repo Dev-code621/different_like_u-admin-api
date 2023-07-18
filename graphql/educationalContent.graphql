@@ -1,0 +1,24 @@
+type EducationalContent {
+    id: ID!
+    name: String!
+    description: String!
+    status: String!
+}
+
+
+input CreateEducationalContentInput {
+    name: String!
+    description: String!
+    status: String!
+}
+
+input DeleteEducationalContentInput {
+    id: ID!
+}
+
+input UpdateEducationalContentInput {
+    id: ID!
+    name: String!
+    description: String!
+    status: String!
+}

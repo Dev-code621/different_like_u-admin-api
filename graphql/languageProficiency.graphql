@@ -1,0 +1,21 @@
+type LanguageProficiency {
+    id: ID!
+    name: String!
+    code: String!
+}
+
+input CreateLanguageProficiencyInput {
+    name: String!
+    code: String!
+}
+
+input DeleteLanguageProficiencyInput {
+    id: ID!
+}
+
+input UpdateLanguageProficiencyInput {
+    id: ID!
+    name: String!
+    code: String!
+}
+

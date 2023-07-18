@@ -1,0 +1,3 @@
+type AllyGroupUserDetailPivot {
+    last_modified: String
+}

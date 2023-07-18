@@ -1,0 +1,20 @@
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/tls-acme: '"true"'
+  generation: 4
+  name: lb
+spec:
+  rules:
+  - host: stg.differentlikeyouinc.com
+    http:
+      paths:
+      - backend:
+          serviceName: web
+          servicePort: 80     
+  tls:
+  - hosts:
+    - stg.differentlikeyouinc.com
+    secretName: differentlikeyou-tls

@@ -1,0 +1,43 @@
+type User {
+    id: ID!
+    name: String!
+    last_name: String
+    email: String!
+    roles: [Role]
+    permissions: [Permission]
+    avatar: String
+    created_at: String
+    updated_at: String
+    userDetail: UserDetail
+    fcm_token: String
+    business: Business
+}
+
+type Role {
+    id: ID!
+    name: String!
+    permissions: [Permission]
+}
+
+type Permission {
+    id: ID!
+    name: String!
+}
+
+input UpdateUserInput {
+    id: ID
+    name: String
+    last_name: String
+    email: String
+    avatar: String
+    fcm_token: String
+}
+
+input DeleteUserInput {
+    id: ID!
+}
+
+type DeleteUserResponse {
+    status: String!
+    message: String
+}

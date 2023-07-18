@@ -1,0 +1,38 @@
+type Notification {
+    id: ID!
+    user: User!
+    review: Review!
+    reply: Reply
+    type: NotificationEnumType!
+    read: Boolean!
+}
+
+input CreateNotificationInput {
+    user_id: ID!
+    review_id: ID!
+    reply_id: ID
+    type: NotificationEnumType!
+    read: Boolean!
+}
+
+input DeleteNotificationInput {
+    id: ID!
+}
+
+input UpdateNotificationInput {
+    id: ID!
+    user_id: ID!
+    review_id: ID!
+    reply_id: ID
+    type: NotificationEnumType!
+    read: Boolean!
+}
+
+enum NotificationEnumType {
+    REVIEW_RESPONSE @enum(value: "REVIEW_RESPONSE")
+    REPLY_RESPONSE @enum(value: "REPLY_RESPONSE")
+    LIKE_REVIEW @enum(value: "LIKE_REVIEW")
+    LIKE_REPLY @enum(value: "LIKE_REPLY")
+
+}
+
